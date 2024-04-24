@@ -1,0 +1,959 @@
+{
+  "code": 200,
+  "message": "Success",
+  "data": [
+    {
+      "DistrictID": 3713,
+      "ProvinceID": 202,
+      "DistrictName": "Quận mới",
+      "Type": 1,
+      "SupportType": 1,
+      "NameExtension": ["Quận mới"],
+      "DistrictEncode": "132321",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": [3044450, 2528374, 1269909, 3005124],
+        "To": [3044450, 2528374, 1269909, 3005124],
+        "Return": [3044450, 2528374, 1269909, 3005124]
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "CreatedIP": "45.122.245.154",
+      "CreatedEmployee": 1004,
+      "CreatedSource": "internal",
+      "CreatedDate": "2021-12-06T08:10:30.727Z",
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-12-06T08:25:45.722Z"
+    },
+    {
+      "DistrictID": 3711,
+      "ProvinceID": 202,
+      "DistrictName": "Quận test 1",
+      "Type": 2,
+      "SupportType": 0,
+      "NameExtension": ["Quận test 1"],
+      "CanUpdateCOD": false,
+      "Status": 2,
+      "WhiteListClient": {
+        "From": [3044450, 2528374, 1269909, 3005124],
+        "To": [3044450, 2528374, 1269909, 3005124],
+        "Return": [3044450, 2528374, 1269909, 3005124]
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "CreatedIP": "45.122.245.154",
+      "CreatedEmployee": 1004,
+      "CreatedSource": "internal",
+      "CreatedDate": "2021-12-06T03:47:55.128Z",
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-12-06T04:18:38.623Z"
+    },
+    {
+      "DistrictID": 3695,
+      "ProvinceID": 202,
+      "DistrictName": "Thành Phố Thủ Đức",
+      "Code": "3695",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": [
+        "TP Thủ Đức",
+        "thành phố thủ đức",
+        "TP. Thủ Đức",
+        "TP. Thu Duc",
+        "thuduc"
+      ],
+      "IsEnable": 1,
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [
+          1966, 1965, 1765, 1764, 1763, 1762, 1761, 1760, 1759, 1643, 3695,
+          3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460, 1459,
+          1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449, 1448,
+          1447, 1446, 1444, 1443, 1442
+        ],
+        "To": [
+          1966, 1965, 1765, 1764, 1763, 1762, 1761, 1760, 1759, 1643, 3695,
+          3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460, 1459,
+          1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449, 1448,
+          1447, 1446, 1444, 1443, 1442, 3281, 1951, 1869, 1868, 1867, 1716,
+          1715, 1599
+        ]
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "CreatedIP": "35.247.155.234",
+      "CreatedEmployee": 242614,
+      "CreatedSource": "internal",
+      "CreatedDate": "2020-12-25T08:02:27.479Z",
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2022-03-02T10:16:02.37Z"
+    },
+    {
+      "DistrictID": 2090,
+      "ProvinceID": 202,
+      "DistrictName": "Huyện Cần Giờ",
+      "Code": "0224",
+      "Type": 3,
+      "SupportType": 3,
+      "NameExtension": [
+        "Huyện Cần Giờ",
+        "H.Cần Giờ",
+        "H Cần Giờ",
+        "Cần Giờ",
+        "Can Gio",
+        "Huyen Can Gio",
+        "cangio"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.43286 +0700 +07 m=+0.016806156",
+      "UpdatedAt": "2020-09-29 13:42:51.30901 +0700 +07 m=+23.811262702",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": [3044450],
+        "To": [3044450],
+        "Return": [3044450]
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-12-14T01:55:45.953Z"
+    },
+    {
+      "DistrictID": 1534,
+      "ProvinceID": 202,
+      "DistrictName": "Huyện Nhà Bè",
+      "Code": "0223",
+      "Type": 3,
+      "SupportType": 3,
+      "NameExtension": [
+        "Huyện Nhà Bè",
+        "H.Nhà Bè",
+        "H Nhà Bè",
+        "Nhà Bè",
+        "Nha Be",
+        "Huyen Nha Be",
+        "nhabe"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431561 +0700 +07 m=+0.015506491",
+      "UpdatedAt": "2020-09-29 13:43:12.393683 +0700 +07 m=+44.895535145",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [],
+        "To": []
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1533,
+      "ProvinceID": 202,
+      "DistrictName": "Huyện Bình Chánh",
+      "Code": "0220",
+      "Type": 3,
+      "SupportType": 3,
+      "NameExtension": [
+        "Huyện Bình Chánh",
+        "H.Bình Chánh",
+        "H Bình Chánh",
+        "Bình Chánh",
+        "Binh Chanh",
+        "Huyen Binh Chanh",
+        "binhchanh"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431559 +0700 +07 m=+0.015504988",
+      "UpdatedAt": "2020-09-29 13:43:12.446563 +0700 +07 m=+44.948414080",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-18T11:52:28.884Z"
+    },
+    {
+      "DistrictID": 1463,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Thủ Đức",
+      "Code": "0218",
+      "Type": 2,
+      "SupportType": 3,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431478 +0700 +07 m=+0.015424117",
+      "UpdatedAt": "2020-09-29 13:43:13.2912 +0700 +07 m=+45.793035011",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2022-03-04T02:27:39.724Z"
+    },
+    {
+      "DistrictID": 1462,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Bình Thạnh",
+      "Code": "0216",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": [
+        "Quận Bình Thạnh",
+        "Q.Bình Thạnh",
+        "Q Bình Thạnh",
+        "Bình Thạnh",
+        "Binh Thanh",
+        "Quan Binh Thanh",
+        "binhthanh"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431477 +0700 +07 m=+0.015422592",
+      "UpdatedAt": "2020-09-29 13:43:13.334947 +0700 +07 m=+45.836781381",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "116.110.42.26",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-01T07:25:25.816Z"
+    },
+    {
+      "DistrictID": 1461,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Gò Vấp",
+      "Code": "0213",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": [
+        "Quận Gò Vấp",
+        "Q.Gò Vấp",
+        "Q Gò Vấp",
+        "Gò Vấp",
+        "Go Vap",
+        "Quan Go Vap",
+        "govap"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431475 +0700 +07 m=+0.015421092",
+      "UpdatedAt": "2020-09-29 13:43:13.36741 +0700 +07 m=+45.869244019",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [],
+        "To": []
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1460,
+      "ProvinceID": 202,
+      "DistrictName": "Huyện Củ Chi",
+      "Code": "0221",
+      "Type": 3,
+      "SupportType": 3,
+      "NameExtension": [
+        "Huyện Củ Chi",
+        "H.Củ Chi",
+        "H Củ Chi",
+        "Củ Chi",
+        "Cu Chi",
+        "Huyen Cu Chi",
+        "cuchi"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431471 +0700 +07 m=+0.015417090",
+      "UpdatedAt": "2020-09-29 13:43:13.399768 +0700 +07 m=+45.901601232",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [
+          3695, 3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460,
+          1459, 1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449,
+          1448, 1447, 1446, 1444, 1443, 1442
+        ],
+        "To": [
+          3695, 3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460,
+          1459, 1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449,
+          1448, 1447, 1446, 1444, 1443, 1442
+        ]
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "113.23.17.128",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1459,
+      "ProvinceID": 202,
+      "DistrictName": "Huyện Hóc Môn",
+      "Code": "0222",
+      "Type": 3,
+      "SupportType": 3,
+      "NameExtension": [
+        "Huyện Hóc Môn",
+        "H.Hóc Môn",
+        "H Hóc Môn",
+        "Hóc Môn",
+        "Hoc Mon",
+        "Huyen Hoc Mon",
+        "hocmon"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.43147 +0700 +07 m=+0.015415491",
+      "UpdatedAt": "2020-09-29 13:43:13.441762 +0700 +07 m=+45.943594173",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [],
+        "To": []
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1458,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Bình Tân Update",
+      "Code": "0219",
+      "Type": 2,
+      "SupportType": 3,
+      "NameExtension": [
+        "Quận Bình Tân",
+        "Q.Bình Tân",
+        "Q Bình Tân",
+        "Bình Tân",
+        "Binh Tan",
+        "Quan Binh Tan",
+        "binhtan"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431468 +0700 +07 m=+0.015413875",
+      "UpdatedAt": "2020-09-29 13:43:13.480582 +0700 +07 m=+45.982413136",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-12-06T02:47:13.127Z"
+    },
+    {
+      "DistrictID": 1457,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Phú Nhuận",
+      "Code": "0217",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": [
+        "Quận Phú Nhuận",
+        "Q.Phú Nhuận",
+        "Q Phú Nhuận",
+        "Phú Nhuận",
+        "Phu Nhuan",
+        "Quan Phu Nhuan",
+        "phunhuan"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431467 +0700 +07 m=+0.015412366",
+      "UpdatedAt": "2020-09-29 13:43:13.518115 +0700 +07 m=+46.019946098",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [
+          3695, 3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460,
+          1459, 1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449,
+          1448, 1447, 1446, 1444, 1443, 1442
+        ],
+        "To": [
+          3695, 3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460,
+          1459, 1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449,
+          1448, 1447, 1446, 1444, 1443, 1442
+        ]
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1717068,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1456,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Tân Phú",
+      "Code": "0215",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": [
+        "Quận Tân Phú",
+        "Q.Tân Phú",
+        "Q Tân Phú",
+        "Tân Phú",
+        "Tan Phu",
+        "Quan Tan Phu",
+        "tanphu"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431465 +0700 +07 m=+0.015410774",
+      "UpdatedAt": "2020-09-29 13:43:13.552295 +0700 +07 m=+46.054124942",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": [1462]
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "116.110.42.26",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-01T07:25:34.29Z"
+    },
+    {
+      "DistrictID": 1455,
+      "ProvinceID": 202,
+      "DistrictName": "Quận Tân Bình",
+      "Code": "0214",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": [
+        "Quận Tân Bình",
+        "Q.Tân Bình",
+        "Q Tân Bình",
+        "Tân Bình",
+        "Tan Binh",
+        "Quan Tan Binh",
+        "tanbinh"
+      ],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431463 +0700 +07 m=+0.015409028",
+      "UpdatedAt": "2020-09-29 13:43:13.586836 +0700 +07 m=+46.088665614",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [1456],
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "14.227.71.142",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-01T02:34:40.559Z"
+    },
+    {
+      "DistrictID": 1454,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 12",
+      "Code": "0212",
+      "Type": 2,
+      "SupportType": 3,
+      "NameExtension": ["Quận 12", "Q.12", "Q 12", "12", "Quan 12"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431461 +0700 +07 m=+0.015406435",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2022-03-02T09:56:01.101Z"
+    },
+    {
+      "DistrictID": 1453,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 11",
+      "Code": "0211",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 11", "Q.11", "Q 11", "11", "Quan 11"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431459 +0700 +07 m=+0.015405036",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [
+          3695, 3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460,
+          1459, 1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449,
+          1448, 1447, 1446, 1444, 1443, 1442
+        ],
+        "To": [
+          3695, 3449, 3448, 2090, 1580, 1534, 1533, 1463, 1462, 1461, 1460,
+          1459, 1458, 1457, 1456, 1455, 1454, 1453, 1452, 1451, 1450, 1449,
+          1448, 1447, 1446, 1444, 1443, 1442
+        ]
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-12-06T03:40:32.722Z"
+    },
+    {
+      "DistrictID": 1452,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 10",
+      "Code": "0210",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 10", "Q.10", "Q 10", "10", "Quan 10"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431458 +0700 +07 m=+0.015403597",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2022-10-20T10:08:16.768Z"
+    },
+    {
+      "DistrictID": 1451,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 9",
+      "Code": "0209",
+      "Type": 2,
+      "SupportType": 3,
+      "NameExtension": ["Quận 9", "Q.9", "Q 9", "9", "Quan 9"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431449 +0700 +07 m=+0.015395171",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "45.122.245.154",
+      "UpdatedEmployee": 1004,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2022-03-04T02:27:11.625Z"
+    },
+    {
+      "DistrictID": 1450,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 8",
+      "Code": "0208",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 8", "Q.8", "Q 8", "8", "Quan 8"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431448 +0700 +07 m=+0.015393438",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-09-27T07:06:49.802Z"
+    },
+    {
+      "DistrictID": 1449,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 7",
+      "Code": "0207",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 7", "Q.7", "Q 7", "7", "Quan 7", "District 7"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431446 +0700 +07 m=+0.015391715",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-11-25T09:51:33.05Z"
+    },
+    {
+      "DistrictID": 1448,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 6",
+      "Code": "0206",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 6", "Q.6", "Q 6", "6", "Quan 6"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431444 +0700 +07 m=+0.015390331",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [],
+        "To": []
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1447,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 5",
+      "Code": "0205",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 5", "Q.5", "Q 5", "5", "Quan 5"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431442 +0700 +07 m=+0.015388357",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-18T11:52:48.669Z"
+    },
+    {
+      "DistrictID": 1446,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 4",
+      "Code": "0204",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 4", "Q.4", "Q 4", "4", "Quan 4"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431441 +0700 +07 m=+0.015386954",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [],
+        "To": []
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1444,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 3",
+      "Code": "0203",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 3", "Q.3", "Q 3", "3", "Quan 3"],
+      "DistrictEncode": "Q3",
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431439 +0700 +07 m=+0.015384875",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": null,
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-06T09:04:14.712Z"
+    },
+    {
+      "DistrictID": 1443,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 2",
+      "Code": "0202",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 2", "Q.2", "Q 2", "2", "Quan 2"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.431433 +0700 +07 m=+0.015379303",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": null,
+        "To": null,
+        "Return": null
+      },
+      "WhiteListDistrict": {
+        "From": [],
+        "To": []
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-09-16T08:17:07.982Z"
+    },
+    {
+      "DistrictID": 1442,
+      "ProvinceID": 202,
+      "DistrictName": "Quận 1",
+      "Code": "0201",
+      "Type": 1,
+      "SupportType": 3,
+      "NameExtension": ["Quận 1", "Q.1", "Q 1", "1", "Quan 1"],
+      "IsEnable": 1,
+      "UpdatedBy": 1718600,
+      "CreatedAt": "2019-12-05 15:53:32.43142 +0700 +07 m=+0.015365672",
+      "UpdatedAt": "13 May 20 17:51 +07",
+      "CanUpdateCOD": false,
+      "Status": 1,
+      "WhiteListClient": {
+        "From": [2501220, 3044450],
+        "To": [2501220],
+        "Return": [2501220]
+      },
+      "WhiteListDistrict": {
+        "From": [1457],
+        "To": null
+      },
+      "ReasonCode": "",
+      "ReasonMessage": "",
+      "OnDates": null,
+      "UpdatedIP": "35.247.155.234",
+      "UpdatedEmployee": 1005,
+      "UpdatedSource": "internal",
+      "UpdatedDate": "2021-10-18T11:51:48.608Z"
+    }
+  ]
+}

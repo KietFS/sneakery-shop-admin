@@ -16,30 +16,17 @@ import ActionMenu from "./ActionMenu";
 import { toast } from "react-toastify";
 import LoadingSkeleton from "../../components/LoadingSkeleton";
 
+type IUserRole = 'admin' | 'shopper'
+
 interface IUser {
   id: string;
   username: string;
   email: string;
-  isActive: boolean;
-  address?: IAddress;
+  role: IUserRole
 }
 
-export interface IAddress {
-  addressId: number;
-  homeNumber: string;
-  city: {
-    id: number;
-    name: string;
-  };
-  district: {
-    id: number;
-    name: string;
-  };
-  ward: {
-    id: number;
-    name: string;
-  };
-}
+
+
 
 const UserManagement = () => {
   const [deleteDisable, setDeleteDisable] = React.useState<boolean>(false);
@@ -59,24 +46,24 @@ const UserManagement = () => {
     { field: "username", headerName: "Tên người dùng", width: 400 },
     {
       field: "email",
-      headerName: "Emai",
+      headerName: "Email",
       width: 300,
     },
     {
-      field: "isActive",
-      headerName: "Trạng thái",
+      field: "role",
+      headerName: "Vai trò",
       type: "string",
       width: 150,
       headerAlign: "left",
       align: "left",
-      renderCell: (params: GridRenderCellParams<boolean>) =>
-        params.value === true ? (
+      renderCell: (params: GridRenderCellParams<IUserRole>) =>
+        params.value === 'admin' ? (
           <p className="px-2 py-1 text-green-800 bg-green-50 rounded-full text-xs font-bold">
-            Đang hoạt động
+            Admin
           </p>
         ) : (
           <p className="px-2 py-1 text-red-800 bg-red-50 rounded-full text-xs font-bold">
-            Đã bị khóa
+            Shopper
           </p>
         ),
     },
@@ -170,8 +157,10 @@ const UserManagement = () => {
         }
       );
       if (response?.data?.success == true) {
-        console.log("response", response?.data?.results);
-        setUsers(response?.data?.data);
+        setUsers(response?.data?.results?.map((user: any) => {return {
+          ...user,
+          id: user._id
+        }}));
         setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
@@ -203,7 +192,7 @@ const UserManagement = () => {
 
   React.useEffect(() => {
     getAllUser();
-  }, [page]);
+  }, []);
 
   return (
     <MainLayout

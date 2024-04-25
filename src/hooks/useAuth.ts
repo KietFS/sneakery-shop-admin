@@ -10,7 +10,7 @@ import { IRootState } from "../redux";
 import { setAuth, setUser } from "../redux/slices/auth";
 import { isExistedEmail, loginService, registerService } from "../services/api";
 import { IUser } from "../types/user";
-import { useAppDispatch, useAppSelector } from "./useRedux";
+import { useAppSelector } from "./useRedux";
 
 export const useAuth = () => {
   const [loginWithGoogle, googleUser] = useSignInWithGoogle(auth);
@@ -27,7 +27,9 @@ export const useAuth = () => {
   //checkExisted
   const [existed, setExisted] = useState<boolean | null>(null);
 
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, isAuth } = useAppSelector((state: IRootState) => state.auth);
+
+
 
   const dispatch = useDispatch();
 
@@ -118,6 +120,8 @@ export const useAuth = () => {
   };
 
   return {
+    isAuth,
+
     login,
     loginError,
     googleLogin,

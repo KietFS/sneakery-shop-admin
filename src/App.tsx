@@ -1,11 +1,13 @@
 import RootApp from "./routes/RootApp";
-import store from "./redux";
 import { Provider } from "react-redux";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { setAuth, setUser } from "./redux/slices/auth";
+
+import { persistor, store } from './redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 import "../src/utils/prototype";
 
@@ -18,11 +20,13 @@ export default function App() {
     }
   }, []);
   return (
+    <PersistGate loading={null} persistor={persistor}> 
     <Provider store={store}>
       <ToastContainer />
       <div>
         <RootApp />
       </div>
     </Provider>
+    </PersistGate>
   );
 }

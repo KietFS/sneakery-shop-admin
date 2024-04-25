@@ -52,7 +52,7 @@ const MainLayout: React.FC<IMainLayoutProps> = (props) => {
           <div className="flex items-center space-x-3  py-4 px-4 hover:bg-gray-100 cursor-pointer">
             <CurrencyDollarIcon className="h-6 w-6 text-gray-500" />
             <p className="text-gray-500 font-semibold text-lg">
-              Quản lý lượt đấu giá
+              Quản lý đơn hàng
             </p>
           </div>
         </Link>

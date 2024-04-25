@@ -45,14 +45,19 @@ const ProductManagement = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${apiURL}/products?&page=0&size=9&sort=bidCreatedDate,desc`,
+        `${apiURL}/admin/products?page=${page}&size=${10}`,
         {
           headers: {
             Authorization: `Bearer ${user?.token}`,
           },
         }
       );
-      response && setProducts(response?.data?.data);
+      response && setProducts(response?.data?.results.map((item: any) => {
+        return {
+          ...item,
+          id: item?._id,
+        }
+      }));
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
     } finally {
@@ -81,10 +86,10 @@ const ProductManagement = () => {
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Tên sản phẩm", width: 460 },
     {
-      field: "startPrice",
+      field: "price",
       headerAlign: "left",
       align: "left",
-      headerName: "Giá khởi điểm   ",
+      headerName: "Giá sản phẩm",
       type: "number",
       width: 150,
       renderCell: (params: GridRenderCellParams<string>) => {
@@ -97,7 +102,7 @@ const ProductManagement = () => {
     },
 
     {
-      field: "imagePath",
+      field: "thumbnail",
       headerName: "Hình ảnh",
       type: "string",
       width: 200,
@@ -106,22 +111,14 @@ const ProductManagement = () => {
       renderCell: (params: GridRenderCellParams<string>) => {
         return (
           <div className="w-[120px]">
-            <img src={params.value?.split("?")[0]} width={80} height={60} />
+            <img src={params.value} width={80} height={60} />
           </div>
         );
       },
     },
     {
-      field: "userName",
-      headerName: "Bán bởi người dùng",
-      // renderCell: (params: GridRenderCellParams<string>) => {
-      //   console.log("PARAM", params);
-      //   return (
-      //     <div className="w-[120px]">
-      //       <img src={params.value?.split("?")[0]} width={80} height={60} />
-      //     </div>
-      //   );
-      // },
+      field: "totalRate",
+      headerName: "Lượt đánh giá",
       width: 200,
     },
     {

@@ -162,7 +162,7 @@ const UserManagement = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${apiURL}/admin/profiles?page=${page}&size=${ROW_PER_PAGE}`,
+        `${apiURL}/admin/users`,
         {
           headers: {
             Authorization: `Bearer ${user?.token}`,
@@ -170,9 +170,9 @@ const UserManagement = () => {
         }
       );
       if (response?.data?.success == true) {
-        console.log("response", response?.data?.data);
+        console.log("response", response?.data?.results);
         setUsers(response?.data?.data);
-        setTotalRecord(response?.data?._totalRecords);
+        setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
       console.log("GET USER ERROR", error);
@@ -184,7 +184,7 @@ const UserManagement = () => {
   const refreshUser = async () => {
     try {
       const response = await axios.get(
-        `${apiURL}/admin/profiles?page=${page}&size=${ROW_PER_PAGE}`,
+        `${apiURL}/admin/users`,
         {
           headers: {
             Authorization: `Bearer ${user?.token}`,
@@ -192,8 +192,8 @@ const UserManagement = () => {
         }
       );
       if (response?.data?.success == true) {
-        setUsers(response?.data?.data);
-        setTotalRecord(response?.data?._totalRecords);
+        setUsers(response?.data?.results);
+        setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
       console.log("GET USER ERROR", error);

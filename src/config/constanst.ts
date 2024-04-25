@@ -1,1 +1,1 @@
-export const apiURL = `https://sneakery-develop-4ba9beca2712.herokuapp.com`;
+export const apiURL = `http://localhost:4000`;

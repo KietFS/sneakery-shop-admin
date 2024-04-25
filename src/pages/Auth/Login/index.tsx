@@ -39,9 +39,7 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
     login(values.email, values.password);
   };
 
-  // useEffect(() => {
-  //   user && router.push("/");
-  // }, [user]);
+
 
   return (
     <>

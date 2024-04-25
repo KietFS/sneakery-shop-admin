@@ -3,7 +3,7 @@ import { apiURL } from "../config/constanst";
 
 export const loginService = async (email: string, password: string) => {
   try {
-    const data = await axios.post(`${apiURL}/auth/signin`, {
+    const data = await axios.post(`${apiURL}/users/login`, {
       email,
       password,
     });

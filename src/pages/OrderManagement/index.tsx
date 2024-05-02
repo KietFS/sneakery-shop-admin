@@ -177,7 +177,7 @@ const OrderManagement = () => {
   return (
     <MainLayout
       title="Quản lý đơn hàng"
-      children={
+      content={
         loading ? (
           <div className="w-full h-full px-8 mt-20">
             <LoadingSkeleton />

@@ -106,7 +106,7 @@ export default function DashBoard() {
   return (
     <MainLayout
       title="Tổng quan thông tin của sàn"
-      children={
+      content={
         <div className="flex flex-col gap-y-10">
           <div className="">
             <p className="text-center text-2xl text-gray-500 font-bold mb-4">

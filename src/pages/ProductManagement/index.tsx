@@ -180,7 +180,7 @@ const ProductManagement = () => {
   return (
     <MainLayout
       title="Danh sách sản phẩm "
-      children={
+      content={
         isLoading ? (
           <div className="w-full h-full px-8 mt-20">
             <LoadingSkeleton />

@@ -238,7 +238,7 @@ const CategoryMangement = () => {
     <>
       <MainLayout
         title="Danh sách các danh mục"
-        children={
+        content={
           <div className="w-full flex flex-col gap-y-5">
             <div className="flex w-full justify-between">
               <div></div>

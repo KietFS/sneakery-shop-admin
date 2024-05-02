@@ -5,11 +5,13 @@ export type IInputMode = "INPUT_OTP" | "INPUT_PHONE_NUMBER";
 interface IInitialState {
   isAuth: boolean;
   user: IUser | null;
+  openSideBar: boolean;
 }
 
 const initialState: IInitialState = {
   isAuth: false,
   user: null,
+  openSideBar: false
 };
 
 const authSlice = createSlice({
@@ -22,8 +24,11 @@ const authSlice = createSlice({
     setUser: (state, actions: PayloadAction<IUser | null>) => {
       state.user = actions.payload;
     },
+    setOpenSideBar: (state, actions: PayloadAction<boolean>) => {
+      state.openSideBar = actions.payload;
+    }
   },
 });
 
-export const { setAuth, setUser } = authSlice.actions;
+export const { setAuth, setUser, setOpenSideBar } = authSlice.actions;
 export default authSlice.reducer;

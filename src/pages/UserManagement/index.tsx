@@ -43,11 +43,39 @@ const UserManagement = () => {
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "username", headerName: "Tên người dùng", width: 400 },
+    { field: "username", headerName: "Tên người dùng", width: 250 },
     {
       field: "email",
       headerName: "Email",
-      width: 300,
+      width: 250,
+    },
+    {
+      field: "address",
+      headerName: "Dia chi",
+      width: 200,
+    },
+    {
+      field: "phoneNumber",
+      headerName: "So dien thoai",
+      width: 200,
+    },
+    {
+      field: "isActive",
+      headerName: "Trang thai",
+      type: "string",
+      width: 200,
+      headerAlign: "left",
+      align: "left",
+      renderCell: (params: GridRenderCellParams<boolean>) =>
+        params.value === true ? (
+          <p className="px-2 py-1 text-green-800 bg-green-50 rounded-full text-xs font-bold">
+            Dang hoat dong
+          </p>
+        ) : (
+          <p className="px-2 py-1 text-yellow-800 bg-yellow-50 rounded-full text-xs font-bold">
+            Da bi vo hieu hoa
+          </p>
+        ),
     },
     {
       field: "role",
@@ -56,22 +84,13 @@ const UserManagement = () => {
       width: 150,
       headerAlign: "left",
       align: "left",
-      renderCell: (params: GridRenderCellParams<IUserRole>) =>
-        params.value === 'admin' ? (
-          <p className="px-2 py-1 text-green-800 bg-green-50 rounded-full text-xs font-bold">
-            Admin
-          </p>
-        ) : (
-          <p className="px-2 py-1 text-red-800 bg-red-50 rounded-full text-xs font-bold">
-            Shopper
-          </p>
-        ),
+  
     },
     {
       field: "actions",
       headerName: "Hành động",
       type: "string",
-      width: 300,
+      width: 200,
       headerAlign: "left",
       align: "left",
       renderCell: (params: GridRenderCellParams<any>) => {
@@ -81,7 +100,7 @@ const UserManagement = () => {
               isActive: false,
             };
             const response = await axios.put(
-              `${apiURL}/admin/profiles/${id}`,
+              `${apiURL}/admin/users/deactivate/${id}`,
               payload,
               {
                 headers: {
@@ -91,7 +110,7 @@ const UserManagement = () => {
             );
 
             if (response?.data?.success == true) {
-              toast.success("Vô hiệu hóa tài khoản thành công");
+              toast.success(response?.data?.message || "Vo hieu hoa tai khoan thanh cong");
               refreshUser();
             } else {
             }
@@ -106,7 +125,7 @@ const UserManagement = () => {
               isActive: true,
             };
             const response = await axios.put(
-              `${apiURL}/admin/profiles/${id}`,
+              `${apiURL}/admin/users/activate/${id}`,
               payload,
               {
                 headers: {
@@ -140,7 +159,7 @@ const UserManagement = () => {
                 onActionSuccess: () => refreshUser(),
               },
         ];
-        return <ActionMenu options={options} />;
+        return <>{params.row.role == 'admin'  ? null : <ActionMenu options={options} />}</>;
       },
     },
   ];
@@ -172,6 +191,7 @@ const UserManagement = () => {
 
   const refreshUser = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `${apiURL}/admin/users`,
         {
@@ -181,12 +201,16 @@ const UserManagement = () => {
         }
       );
       if (response?.data?.success == true) {
-        setUsers(response?.data?.results);
+        setUsers(response?.data?.results?.map((user: any) => {return {
+          ...user,
+          id: user._id
+        }}));
         setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
       console.log("GET USER ERROR", error);
     } finally {
+      setLoading(false);
     }
   };
 
@@ -196,36 +220,36 @@ const UserManagement = () => {
 
   return (
     <MainLayout
-      title="Quản lý người dùng"
-      content={
-        loading ? (
-          <div className="w-full h-full px-8 mt-20">
-            <LoadingSkeleton />
+    title="Quản lý người dùng"
+    content={
+      loading ? (
+        <div className="w-full h-full px-8 mt-20">
+          <LoadingSkeleton />
+        </div>
+      ) : (
+        <div className="w-full flex flex-col gap-y-5 bg-white shadow-xl rounded-2xl">
+          <div className="h-[800px] w-full">
+            <DataGrid
+              rows={users}
+              paginationMode="server"
+              page={page}
+              rowCount={totalRecord}
+              pageSize={10}
+              columns={columns}
+              disableSelectionOnClick
+              onPageChange={(current) => setPage(current)}
+              onSelectionModelChange={(newSelectionModel) => {
+                setDeleteDisable(!deleteDisable);
+                setSelectionModel(newSelectionModel);
+              }}
+              selectionModel={selectionModel}
+              checkboxSelection={false}
+            />
           </div>
-        ) : (
-          <div className="w-full flex flex-col gap-y-5">
-            <div className="h-[700px] w-full">
-              <DataGrid
-                rows={users}
-                paginationMode="server"
-                page={page}
-                rowCount={totalRecord}
-                pageSize={10}
-                columns={columns}
-                disableSelectionOnClick
-                onPageChange={(current) => setPage(current)}
-                onSelectionModelChange={(newSelectionModel) => {
-                  setDeleteDisable(!deleteDisable);
-                  setSelectionModel(newSelectionModel);
-                }}
-                selectionModel={selectionModel}
-                checkboxSelection={false}
-              />
-            </div>
-          </div>
-        )
-      }
-    />
+        </div>
+      )
+    }
+  />
   );
 };
 

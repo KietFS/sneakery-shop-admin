@@ -31,17 +31,11 @@ export default function RootApp() {
       <Route path="/user-management">
         <UserManagement />
       </Route>
-      <Route path="/category-management">
-        <CategoryMangement />
-      </Route>
       <Route path="/products-management">
         <ProductManagement />
       </Route>
       <Route path="/orders-management">
         <OrderManagement />
-      </Route>
-      <Route path="/bid-management">
-        <BidManagement />
       </Route>
       <Route path="/login">
         <LoginPage />

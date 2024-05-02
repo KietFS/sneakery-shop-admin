@@ -45,7 +45,7 @@ const ProductManagement = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${apiURL}/admin/products?page=${page}&size=${10}`,
+        `${apiURL}/admin/products`,
         {
           headers: {
             Authorization: `Bearer ${user?.token}`,
@@ -68,7 +68,7 @@ const ProductManagement = () => {
   const refreshProducts = async () => {
     try {
       const response = await axios.get(
-        `${apiURL}/products?&page=0&size=9&sort=bidCreatedDate,desc`,
+        `${apiURL}/admin/products`,
         {
           headers: {
             Authorization: `Bearer ${user?.token}`,
@@ -137,7 +137,7 @@ const ProductManagement = () => {
             setActionLoading(true);
             setSelectedRow(id);
             //THIS NEED TO FIX
-            const response = await axios.delete(`${apiURL}/products/${id}/`, {
+            const response = await axios.delete(`${apiURL}/admin/products/${id}/`, {
               headers: {
                 Authorization: `Bearer ${user?.token}`,
               },

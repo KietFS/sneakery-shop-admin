@@ -129,7 +129,6 @@ export default function MainLayout(props: ISideBarProps) {
   const icons = [
     <ChartBarSquareIcon className="h-6 w-6 text-gray-500" />,
     <UserCircleIcon className="h-6 w-6 text-gray-500" />,
-    <TagIcon className="h-6 w-6 text-gray-500" />,
     <InboxStackIcon className="h-6 w-6 text-gray-500" />,
     <GiftIcon className="h-6 w-6 text-gray-500" />,
   ];
@@ -137,7 +136,6 @@ export default function MainLayout(props: ISideBarProps) {
   const to = [
     "/home",
     "/user-management",
-    "/category-management",
     "/products-management",
     "/orders-management",
   ];
@@ -195,7 +193,6 @@ export default function MainLayout(props: ISideBarProps) {
           {[
             "Tổng quan",
             "Quản lý người dùng",
-            "Quản lý danh mục",
             "Quản lý sản phẩm",
             "Quản lý đơn hàng",
           ].map((text, index) => (

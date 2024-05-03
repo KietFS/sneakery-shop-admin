@@ -44,20 +44,20 @@ const ProductManagement = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        `${apiURL}/admin/products`,
-        {
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-          },
-        }
-      );
-      response && setProducts(response?.data?.results.map((item: any) => {
-        return {
-          ...item,
-          id: item?._id,
-        }
-      }));
+      const response = await axios.get(`${apiURL}/admin/products`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
+      response &&
+        setProducts(
+          response?.data?.results.map((item: any) => {
+            return {
+              ...item,
+              id: item?._id,
+            };
+          })
+        );
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
     } finally {
@@ -67,14 +67,11 @@ const ProductManagement = () => {
 
   const refreshProducts = async () => {
     try {
-      const response = await axios.get(
-        `${apiURL}/admin/products`,
-        {
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${apiURL}/admin/products`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
       response && setProducts(response?.data?.data);
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
@@ -137,11 +134,14 @@ const ProductManagement = () => {
             setActionLoading(true);
             setSelectedRow(id);
             //THIS NEED TO FIX
-            const response = await axios.delete(`${apiURL}/admin/products/${id}/`, {
-              headers: {
-                Authorization: `Bearer ${user?.token}`,
-              },
-            });
+            const response = await axios.delete(
+              `${apiURL}/admin/products/${id}/`,
+              {
+                headers: {
+                  Authorization: `Bearer ${user?.token}`,
+                },
+              }
+            );
 
             if (response?.data?.success) {
               setActionLoading(false);
@@ -186,7 +186,7 @@ const ProductManagement = () => {
             <LoadingSkeleton />
           </div>
         ) : (
-          <div className="w-full flex flex-col gap-y-5">
+          <div className="w-full flex flex-col gap-y-5 bg-white shadow-xl rounded-2xl">
             <div className="flex flex-row justify-between items-center">
               <div></div>
               <div className="flex flex-row gap-x-2">
@@ -198,7 +198,7 @@ const ProductManagement = () => {
                 </Button> */}
               </div>
             </div>
-            <div className="h-[700px] w-full">
+            <div className="h-[800px] w-full">
               <DataGrid
                 rows={products}
                 columns={columns}

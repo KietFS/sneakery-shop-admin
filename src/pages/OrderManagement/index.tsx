@@ -17,6 +17,7 @@ import LoadingSkeleton from "../../components/LoadingSkeleton";
 import ActionMenu from "../UserManagement/ActionMenu";
 import { toast } from "react-toastify";
 import ChangeStatusActionMenu from "./ChangeStatusActionMenu";
+import { OrderStatusEnum } from "../../types/user";
 
 interface IOrder {
   id: number;
@@ -76,14 +77,14 @@ const OrderManagement = () => {
       renderCell: (params: GridRenderCellParams<any>) => {
         const changeStatusOrder = async (
           id: string | number,
-          status: "PENDING" | "APPROVED"
+          status: OrderStatusEnum
         ) => {
           try {
             setActionLoading(true);
             setSelectedRow(id);
             //THIS NEED TO FIX
             const response = await axios.put(
-              `${apiURL}/orders/${id}/`,
+              `${apiURL}/admin/orders/${id}/`,
               {
                 status: status,
               },
@@ -109,15 +110,47 @@ const OrderManagement = () => {
         const options = [
           {
             id: "new",
-            name: "Làm mới đ",
+            title: "New",
+            onPress: () => changeStatusOrder(params.row?.id, "new"),
+            onActionSuccess: () => refreshOrders(),
+          },
+          {
+            id: "received",
+            title: "Received",
+            onPress: () => changeStatusOrder(params.row?.id, "received"),
+            onActionSuccess: () => refreshOrders(),
+          },
+          {
+            id: "processing",
+            title: "Processing",
+            onPress: () => changeStatusOrder(params.row?.id, "processing"),
+            onActionSuccess: () => refreshOrders(),
+          },
+          {
+            id: "shipping",
+            title: "Shipping",
+            onPress: () => changeStatusOrder(params.row?.id, "shipping"),
+            onActionSuccess: () => refreshOrders(),
+          },
+          {
+            id: "finished",
+            title: "Finished",
+            onPress: () => changeStatusOrder(params.row?.id, "finished"),
+            onActionSuccess: () => refreshOrders(),
+          },
+          {
+            id: "canceled",
+            title: "Canceled",
+            onPress: () => changeStatusOrder(params.row?.id, "canceled"),
+            onActionSuccess: () => refreshOrders(),
           },
         ];
         return actionLoading && selectedRow == params.row?.id ? (
           <Spinner size={20} />
         ) : (
           <ChangeStatusActionMenu
-            label={params.value}
-            options={options.filter((id) => id !== params.value)}
+            status={params.value}
+            options={options}
           />
         );
       },
@@ -157,19 +190,14 @@ const OrderManagement = () => {
       headerAlign: "left",
       align: "left",
       renderCell: (params: GridRenderCellParams<any>) => {
-        const changeStatusOrder = async (
+        const removeOrder = async (
           id: string | number,
-          status: "PENDING" | "APPROVED"
         ) => {
           try {
             setActionLoading(true);
             setSelectedRow(id);
-            //THIS NEED TO FIX
-            const response = await axios.put(
-              `${apiURL}/orders/${id}/`,
-              {
-                status: status,
-              },
+            const response = await axios.delete(
+              `${apiURL}/admin/orders/${id}/`,
               {
                 headers: {
                   Authorization: `Bearer ${user?.token}`,
@@ -180,9 +208,9 @@ const OrderManagement = () => {
             if (response?.data?.success) {
               setActionLoading(false);
               refreshOrders();
-              toast.success("Cập nhật đơn hàng thành công");
+              toast.success("Xóa đơn hàng thành công");
             } else {
-              console.log("Error", response?.data?.data, response?.data?.error);
+              console.log("Error", response?.data?.message);
             }
           } catch (error) {
             setActionLoading(false);
@@ -190,19 +218,12 @@ const OrderManagement = () => {
           }
         };
         const options = [
-          params?.row?.status == "PENDING"
-            ? {
-                id: "pending",
-                title: "Duyệt đơn hàng",
-                onPress: () => changeStatusOrder(params.row?.id, "APPROVED"),
-                onActionSuccess: () => refreshOrders(),
-              }
-            : {
-                id: "approved",
-                title: "Hủy đơn hàng",
-                onPress: () => changeStatusOrder(params.row?.id, "PENDING"),
-                onActionSuccess: () => refreshOrders(),
-              },
+          {
+            id: "delete",
+            title: "Xóa đơn hàng",
+            onPress: () => removeOrder(params.row?.id),
+            onActionSuccess: () => refreshOrders(),
+          },
         ];
         return actionLoading && selectedRow == params.row?.id ? (
           <Spinner size={20} />
@@ -246,7 +267,17 @@ const OrderManagement = () => {
           Authorization: `Bearer ${user?.token}`,
         },
       });
-      response && setOrders(response?.data?.data as IOrder[]);
+      if (!!response) {
+        const filterResponse = response?.data?.results?.map(
+          (item: any, index: number) => {
+            return {
+              ...item,
+              id: item._id,
+            };
+          }
+        );
+        setOrders(filterResponse);
+      }
     } catch (error) {
       console.log("GET ALL ORDER ERROR", error);
     } finally {
@@ -254,8 +285,8 @@ const OrderManagement = () => {
   };
 
   React.useEffect(() => {
-    user && getAllOrders();
-  }, [user]);
+   getAllOrders();
+  }, []);
 
   return (
     <MainLayout
@@ -276,7 +307,6 @@ const OrderManagement = () => {
                 disableSelectionOnClick
                 rowsPerPageOptions={[10]}
                 onSelectionModelChange={(newSelectionModel) => {
-                  console.log("NEW SELECTION MODEL", newSelectionModel);
                   setDeleteDisable(!deleteDisable);
                   setSelectionModel(newSelectionModel);
                 }}

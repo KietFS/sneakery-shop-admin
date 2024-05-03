@@ -7,7 +7,7 @@ import {
   GridValueGetterParams,
 } from "@mui/x-data-grid";
 import MainLayout from "../../layouts/MainLayout";
-import { Button, Skeleton, TablePagination } from "@mui/material";
+import { Button, Pagination, Skeleton, TablePagination } from "@mui/material";
 import axios from "axios";
 import { useAppSelector } from "../../hooks/useRedux";
 import { IRootState } from "../../redux";
@@ -34,7 +34,7 @@ const ProductManagement = () => {
     []
   );
   const [isLoading, setLoading] = React.useState<boolean>(false);
-  const [page, setPage] = React.useState<number>(0);
+  const [page, setPage] = React.useState<number>(1);
   const [totalRecord, setTotalRecord] = React.useState<number>(0);
   const [actionLoading, setActionLoading] = React.useState<boolean>(false);
   const [selectedRow, setSelectedRow] = React.useState<string | number>("");
@@ -44,12 +44,12 @@ const ProductManagement = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${apiURL}/admin/products`, {
+      const response = await axios.get(`${apiURL}/admin/products?page=${page}&limit=${ROW_PER_PAGE}`, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
         },
       });
-      response &&
+      if (response?.data?.success){
         setProducts(
           response?.data?.results.map((item: any) => {
             return {
@@ -58,6 +58,8 @@ const ProductManagement = () => {
             };
           })
         );
+        setTotalRecord(response?.data?.totalRecords)
+      }
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
     } finally {
@@ -67,12 +69,22 @@ const ProductManagement = () => {
 
   const refreshProducts = async () => {
     try {
-      const response = await axios.get(`${apiURL}/admin/products`, {
+      const response = await axios.get(`${apiURL}/admin/products?page=1&limit=${ROW_PER_PAGE}`, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
         },
       });
-      response && setProducts(response?.data?.data);
+      if (response?.data?.success){
+        setProducts(
+          response?.data?.results.map((item: any) => {
+            return {
+              ...item,
+              id: item?._id,
+            };
+          })
+        );
+        setTotalRecord(response?.data?.totalRecords)
+      }
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
     } finally {
@@ -128,7 +140,6 @@ const ProductManagement = () => {
       renderCell: (params: GridRenderCellParams<any>) => {
         const removeProduct = async (
           id: string | number,
-          status: "PENDING" | "APPROVED"
         ) => {
           try {
             setActionLoading(true);
@@ -160,7 +171,7 @@ const ProductManagement = () => {
           {
             id: "delete",
             title: "Xóa sản phẩm",
-            onPress: () => removeProduct(params.row?.id, "APPROVED"),
+            onPress: () => removeProduct(params.row?.id),
             onActionSuccess: () => refreshProducts(),
           },
         ];
@@ -175,7 +186,12 @@ const ProductManagement = () => {
 
   React.useEffect(() => {
     getAllProducts();
+  }, [page]);
+
+  React.useEffect(() => {
+    getAllProducts();
   }, []);
+
 
   return (
     <MainLayout
@@ -190,12 +206,12 @@ const ProductManagement = () => {
             <div className="flex flex-row justify-between items-center">
               <div></div>
               <div className="flex flex-row gap-x-2">
-                {/* <Button variant="contained" disabled={!deleteDisable}>
-                  Xóa sản phẩm
-                </Button> */}
-                {/* <Button variant="outlined" disabled={deleteDisable}>
-                  Xuất file CSV
-                </Button> */}
+              <Pagination
+                onChange={(event, changedPage) => setPage(changedPage)}
+                count={Math.ceil(totalRecord / ROW_PER_PAGE)}
+                defaultPage={1}
+                page={page}
+              />
               </div>
             </div>
             <div className="h-[800px] w-full">

@@ -3,6 +3,8 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import OrderStatusBadge from "../../components/StatusBadge";
+import { OrderStatusEnum } from "../../types/user";
 
 const ITEM_HEIGHT = 48;
 
@@ -14,12 +16,12 @@ interface IChangeStatusActionMenu {
     onActionSuccess: () => void;
   }[];
 
-  label: string;
+  status: OrderStatusEnum;  
 }
 
 const ChangeStatusActionMenu: React.FC<IChangeStatusActionMenu> = ({
   options,
-  label,
+  status,
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -33,7 +35,7 @@ const ChangeStatusActionMenu: React.FC<IChangeStatusActionMenu> = ({
   return (
     <div>
       <button onClick={handleClick}>
-        <p className="text-sm">{label}</p>
+        <OrderStatusBadge status={status} />
       </button>
       <Menu
         id="long-menu"

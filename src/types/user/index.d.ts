@@ -14,3 +14,11 @@ export interface IAddress {
   ward: string;
   addressDetail: string;
 }
+
+export type OrderStatusEnum =
+  | 'new'
+  | 'received'
+  | 'processing'
+  | 'shipping'
+  | 'finished'
+  | 'canceled';

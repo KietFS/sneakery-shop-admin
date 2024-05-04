@@ -44,12 +44,15 @@ const ProductManagement = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${apiURL}/admin/products?page=${page}&limit=${ROW_PER_PAGE}`, {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
-      });
-      if (response?.data?.success){
+      const response = await axios.get(
+        `${apiURL}/admin/products?page=${page}&limit=${ROW_PER_PAGE}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      );
+      if (response?.data?.success) {
         setProducts(
           response?.data?.results.map((item: any) => {
             return {
@@ -58,7 +61,7 @@ const ProductManagement = () => {
             };
           })
         );
-        setTotalRecord(response?.data?.totalRecords)
+        setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
@@ -69,12 +72,15 @@ const ProductManagement = () => {
 
   const refreshProducts = async () => {
     try {
-      const response = await axios.get(`${apiURL}/admin/products?page=1&limit=${ROW_PER_PAGE}`, {
-        headers: {
-          Authorization: `Bearer ${user?.token}`,
-        },
-      });
-      if (response?.data?.success){
+      const response = await axios.get(
+        `${apiURL}/admin/products?page=${page}&limit=${ROW_PER_PAGE}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      );
+      if (response?.data?.success) {
         setProducts(
           response?.data?.results.map((item: any) => {
             return {
@@ -83,7 +89,7 @@ const ProductManagement = () => {
             };
           })
         );
-        setTotalRecord(response?.data?.totalRecords)
+        setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
       console.log("GET PRODUCT RESPONSE", error);
@@ -138,9 +144,7 @@ const ProductManagement = () => {
       headerAlign: "left",
       align: "left",
       renderCell: (params: GridRenderCellParams<any>) => {
-        const removeProduct = async (
-          id: string | number,
-        ) => {
+        const removeProduct = async (id: string | number) => {
           try {
             setActionLoading(true);
             setSelectedRow(id);
@@ -154,9 +158,10 @@ const ProductManagement = () => {
               }
             );
 
+            console.log("REPONSE IS", response?.data);
+
             if (response?.data?.success) {
               setActionLoading(false);
-
               refreshProducts();
               toast.success("Xóa sản phẩm thành công");
             } else {
@@ -192,7 +197,6 @@ const ProductManagement = () => {
     getAllProducts();
   }, []);
 
-
   return (
     <MainLayout
       title="Danh sách sản phẩm "
@@ -206,12 +210,12 @@ const ProductManagement = () => {
             <div className="flex flex-row justify-between items-center">
               <div></div>
               <div className="flex flex-row gap-x-2">
-              <Pagination
-                onChange={(event, changedPage) => setPage(changedPage)}
-                count={Math.ceil(totalRecord / ROW_PER_PAGE)}
-                defaultPage={1}
-                page={page}
-              />
+                <Pagination
+                  onChange={(event, changedPage) => setPage(changedPage)}
+                  count={Math.ceil(totalRecord / ROW_PER_PAGE)}
+                  defaultPage={1}
+                  page={page}
+                />
               </div>
             </div>
             <div className="h-[800px] w-full">

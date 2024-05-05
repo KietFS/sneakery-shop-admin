@@ -49,7 +49,9 @@ function AddressDialog(props: IAddressDialogProps) {
   const [wardSelected, setWardSelected] = React.useState<IWard | null>(null);
   const [districtError, setDistrictError] = React.useState<string>("");
   const [wardError, setWardError] = React.useState<string>("");
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
 
   const validationSchema = yup
     .object()
@@ -82,7 +84,7 @@ function AddressDialog(props: IAddressDialogProps) {
         },
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );

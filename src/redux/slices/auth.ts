@@ -6,12 +6,14 @@ interface IInitialState {
   isAuth: boolean;
   user: IUser | null;
   openSideBar: boolean;
+  accessToken: string | null;
 }
 
 const initialState: IInitialState = {
   isAuth: false,
   user: null,
-  openSideBar: false
+  openSideBar: false,
+  accessToken: null,
 };
 
 const authSlice = createSlice({
@@ -26,9 +28,13 @@ const authSlice = createSlice({
     },
     setOpenSideBar: (state, actions: PayloadAction<boolean>) => {
       state.openSideBar = actions.payload;
-    }
+    },
+    setAccessToken: (state, actions: PayloadAction<string | null>) => {
+      state.accessToken = actions.payload;
+    },
   },
 });
 
-export const { setAuth, setUser, setOpenSideBar } = authSlice.actions;
+export const { setAuth, setUser, setOpenSideBar, setAccessToken } =
+  authSlice.actions;
 export default authSlice.reducer;

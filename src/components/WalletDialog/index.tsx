@@ -17,7 +17,9 @@ interface IWalletDialogProps {
 
 const WalletDialog: React.FC<IWalletDialogProps> = (props) => {
   const { open, onClose } = props;
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [money, setMoney] = useState<number | null>(null);
   const [isExisted, setIsExisted] = useState<boolean | null>(null);
   const [createSuccess, setCreateSuccess] = useState<boolean | null>(null);
@@ -73,7 +75,7 @@ const WalletDialog: React.FC<IWalletDialogProps> = (props) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );

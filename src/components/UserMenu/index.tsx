@@ -13,7 +13,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { setUser } from "../../redux/slices/auth";
+import { setAccessToken, setUser } from "../../redux/slices/auth";
 
 export default function UserMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -33,6 +33,7 @@ export default function UserMenu() {
       localStorage.removeItem("admin");
       localStorage.removeItem("token");
       dispatch(setUser(null));
+      dispatch(setAccessToken(null));
       toast.success("Đăng xuất thành công", {
         position: "top-right",
         hideProgressBar: true,

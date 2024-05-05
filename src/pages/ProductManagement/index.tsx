@@ -29,7 +29,9 @@ const ProductManagement = () => {
   const [deleteDisable, setDeleteDisable] = React.useState<boolean>(false);
   const [selectionModel, setSelectionModel] =
     React.useState<GridSelectionModel>([]);
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [products, setProducts] = React.useState<IProductHomePageResponse[]>(
     []
   );
@@ -48,7 +50,7 @@ const ProductManagement = () => {
         `${apiURL}/admin/products?page=${page}&limit=${ROW_PER_PAGE}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -76,7 +78,7 @@ const ProductManagement = () => {
         `${apiURL}/admin/products?page=${page}&limit=${ROW_PER_PAGE}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -153,7 +155,7 @@ const ProductManagement = () => {
               `${apiURL}/admin/products/${id}/`,
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );

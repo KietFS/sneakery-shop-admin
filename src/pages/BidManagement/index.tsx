@@ -85,7 +85,9 @@ const BidManagement = () => {
   );
 
   //redux
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
 
   //functions
   const getAllProducts = async () => {
@@ -95,7 +97,7 @@ const BidManagement = () => {
         `${apiURL}/products?&page=0&size=9&sort=bidCreatedDate,desc`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );

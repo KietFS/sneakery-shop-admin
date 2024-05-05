@@ -1,9 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './rootReducer'
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./rootReducer";
 // configureStore.js
 
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import createFilter from 'redux-persist-transform-filter'
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import createFilter from "redux-persist-transform-filter";
 import {
   persistStore,
   persistReducer,
@@ -13,34 +13,36 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
+} from "redux-persist";
 
-const saveSubsetAuthReducer = createFilter('auth', ['accessToken', 'user', 'isAuth'])
+const saveSubsetAuthReducer = createFilter("auth", [
+  "accessToken",
+  "user",
+  "isAuth",
+]);
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  transforms: [
-    saveSubsetAuthReducer,
-  ],
-  whitelist: ['auth', ],
-}
+  transforms: [saveSubsetAuthReducer],
+  whitelist: ["auth"],
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-})
+});
 
-let persistor = persistStore(store)
+let persistor = persistStore(store);
 
-export type IRootState = ReturnType<typeof store.getState>
-export type IStoreDispatch = typeof store.dispatch
+export type IRootState = ReturnType<typeof store.getState>;
+export type IStoreDispatch = typeof store.dispatch;
 
-export { store, persistor }
+export { store, persistor };

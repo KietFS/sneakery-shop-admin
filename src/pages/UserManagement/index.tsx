@@ -16,17 +16,14 @@ import ActionMenu from "./ActionMenu";
 import { toast } from "react-toastify";
 import LoadingSkeleton from "../../components/LoadingSkeleton";
 
-type IUserRole = 'admin' | 'shopper'
+type IUserRole = "admin" | "shopper";
 
 interface IUser {
   id: string;
   username: string;
   email: string;
-  role: IUserRole
+  role: IUserRole;
 }
-
-
-
 
 const UserManagement = () => {
   const [deleteDisable, setDeleteDisable] = React.useState<boolean>(false);
@@ -34,7 +31,9 @@ const UserManagement = () => {
     React.useState<GridSelectionModel>([]);
   const [users, setUsers] = React.useState<IUser[]>([]);
 
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [loading, setLoading] = React.useState<boolean>(false);
   const [page, setPage] = React.useState<number>(0);
   const [totalRecord, setTotalRecord] = React.useState<number>(0);
@@ -84,7 +83,6 @@ const UserManagement = () => {
       width: 150,
       headerAlign: "left",
       align: "left",
-  
     },
     {
       field: "actions",
@@ -104,13 +102,15 @@ const UserManagement = () => {
               payload,
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );
 
             if (response?.data?.success == true) {
-              toast.success(response?.data?.message || "Vo hieu hoa tai khoan thanh cong");
+              toast.success(
+                response?.data?.message || "Vo hieu hoa tai khoan thanh cong"
+              );
               refreshUser();
             } else {
             }
@@ -129,7 +129,7 @@ const UserManagement = () => {
               payload,
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );
@@ -159,27 +159,35 @@ const UserManagement = () => {
                 onActionSuccess: () => refreshUser(),
               },
         ];
-        return <>{params.row.role == 'admin'  ? null : <ActionMenu options={options} />}</>;
+        return (
+          <>
+            {params.row.role == "admin" ? null : (
+              <ActionMenu options={options} />
+            )}
+          </>
+        );
       },
     },
   ];
 
+  console.log("ACC", accessToken);
   const getAllUser = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        `${apiURL}/admin/users`,
-        {
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${apiURL}/admin/users`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       if (response?.data?.success == true) {
-        setUsers(response?.data?.results?.map((user: any) => {return {
-          ...user,
-          id: user._id
-        }}));
+        setUsers(
+          response?.data?.results?.map((user: any) => {
+            return {
+              ...user,
+              id: user._id,
+            };
+          })
+        );
         setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
@@ -192,19 +200,20 @@ const UserManagement = () => {
   const refreshUser = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        `${apiURL}/admin/users`,
-        {
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${apiURL}/admin/users`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       if (response?.data?.success == true) {
-        setUsers(response?.data?.results?.map((user: any) => {return {
-          ...user,
-          id: user._id
-        }}));
+        setUsers(
+          response?.data?.results?.map((user: any) => {
+            return {
+              ...user,
+              id: user._id,
+            };
+          })
+        );
         setTotalRecord(response?.data?.totalRecords);
       }
     } catch (error) {
@@ -220,36 +229,36 @@ const UserManagement = () => {
 
   return (
     <MainLayout
-    title="Quản lý người dùng"
-    content={
-      loading ? (
-        <div className="w-full h-full px-8 mt-20">
-          <LoadingSkeleton />
-        </div>
-      ) : (
-        <div className="w-full flex flex-col gap-y-5 bg-white shadow-xl rounded-2xl">
-          <div className="h-[800px] w-full">
-            <DataGrid
-              rows={users}
-              paginationMode="server"
-              page={page}
-              rowCount={totalRecord}
-              pageSize={10}
-              columns={columns}
-              disableSelectionOnClick
-              onPageChange={(current) => setPage(current)}
-              onSelectionModelChange={(newSelectionModel) => {
-                setDeleteDisable(!deleteDisable);
-                setSelectionModel(newSelectionModel);
-              }}
-              selectionModel={selectionModel}
-              checkboxSelection={false}
-            />
+      title="Quản lý người dùng"
+      content={
+        loading ? (
+          <div className="w-full h-full px-8 mt-20">
+            <LoadingSkeleton />
           </div>
-        </div>
-      )
-    }
-  />
+        ) : (
+          <div className="w-full flex flex-col gap-y-5 bg-white shadow-xl rounded-2xl">
+            <div className="h-[800px] w-full">
+              <DataGrid
+                rows={users}
+                paginationMode="server"
+                page={page}
+                rowCount={totalRecord}
+                pageSize={10}
+                columns={columns}
+                disableSelectionOnClick
+                onPageChange={(current) => setPage(current)}
+                onSelectionModelChange={(newSelectionModel) => {
+                  setDeleteDisable(!deleteDisable);
+                  setSelectionModel(newSelectionModel);
+                }}
+                selectionModel={selectionModel}
+                checkboxSelection={false}
+              />
+            </div>
+          </div>
+        )
+      }
+    />
   );
 };
 

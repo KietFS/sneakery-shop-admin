@@ -28,7 +28,9 @@ function BidDialog(props: IBidDialogProps) {
   });
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>("");
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const validationSchema = yup
     .object()
     .shape<{ [k in keyof IFormValue]: any }>({});
@@ -47,7 +49,7 @@ function BidDialog(props: IBidDialogProps) {
           },
           {
             headers: {
-              Authorization: `Bearer ${user?.token}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );

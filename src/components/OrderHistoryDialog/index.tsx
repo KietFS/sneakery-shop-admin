@@ -26,7 +26,9 @@ const OrderHistoryDialog: React.FC<IOrderHistoryDialogProps> = (props) => {
   const { open, onClose } = props;
   const [bids, setBids] = useState<IBidHistoryItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
 
   const getBidHistory = async () => {
     try {
@@ -35,7 +37,7 @@ const OrderHistoryDialog: React.FC<IOrderHistoryDialogProps> = (props) => {
         `${apiURL}/bid_history/user/${user?.id}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );

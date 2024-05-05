@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { auth } from "../common/config/firebase";
 import { IRootState } from "../redux";
-import { setAuth, setUser } from "../redux/slices/auth";
+import { setAccessToken, setAuth, setUser } from "../redux/slices/auth";
 import { isExistedEmail, loginService, registerService } from "../services/api";
 import { IUser } from "../types/user";
 import { useAppSelector } from "./useRedux";
@@ -29,23 +29,24 @@ export const useAuth = () => {
 
   const { user, isAuth } = useAppSelector((state: IRootState) => state.auth);
 
-
-
   const dispatch = useDispatch();
 
   const login = async (email: string, password: string) => {
     try {
       setLoginLoading(true);
-      const data = await loginService(email, password);
-      if (data) {
+      const response = await loginService(email, password);
+      if (response) {
         toast.success("Đăng nhập thành công", {
           position: "top-right",
           autoClose: 0,
           theme: "colored",
           hideProgressBar: true,
         });
-        console.log("LOGIN RESPONSE", data.data);
-        dispatch(setUser(data?.data?.data as IUser));
+        console.log("LOGIN RESPONSE", response.data);
+        dispatch(setUser(response?.data?.message?.info?.user as IUser));
+        dispatch(
+          setAccessToken(response?.data?.message?.info?.accessToken as string)
+        );
         dispatch(setAuth(true));
       } else {
         toast.error("Tên đăng nhập hoặc mật khẩu không đúng", {

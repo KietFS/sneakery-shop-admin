@@ -24,6 +24,8 @@ import LogoutConfirmDialog from "../LogoutConfirmDialog";
 import { toast } from "react-toastify";
 import PostedDialog from "../PostedDialog";
 import WalletDialog from "../WalletDialog";
+import { useDispatch } from "react-redux";
+import { setAccessToken, setUser } from "../../redux/slices/auth";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -39,6 +41,7 @@ const MenuProps = {
 export default function MultipleSelectPlaceholder() {
   const [personName, setPersonName] = React.useState<string[]>([]);
   const { user } = useAppSelector((state: IRootState) => state.auth);
+  const dispatch = useDispatch();
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
     const {
@@ -60,6 +63,8 @@ export default function MultipleSelectPlaceholder() {
         hideProgressBar: true,
         theme: "colored",
       });
+      dispatch(setUser(null));
+      dispatch(setAccessToken(null));
     } catch (error) {
       console.log(error);
     }

@@ -40,7 +40,9 @@ const OrderManagement = () => {
     React.useState<GridSelectionModel>([]);
   const [orders, setOrders] = React.useState<IOrder[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [actionLoading, setActionLoading] = React.useState<boolean>(false);
   const [selectedRow, setSelectedRow] = React.useState<string | number>("");
 
@@ -90,7 +92,7 @@ const OrderManagement = () => {
               },
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );
@@ -148,10 +150,7 @@ const OrderManagement = () => {
         return actionLoading && selectedRow == params.row?.id ? (
           <Spinner size={20} />
         ) : (
-          <ChangeStatusActionMenu
-            status={params.value}
-            options={options}
-          />
+          <ChangeStatusActionMenu status={params.value} options={options} />
         );
       },
     },
@@ -190,9 +189,7 @@ const OrderManagement = () => {
       headerAlign: "left",
       align: "left",
       renderCell: (params: GridRenderCellParams<any>) => {
-        const removeOrder = async (
-          id: string | number,
-        ) => {
+        const removeOrder = async (id: string | number) => {
           try {
             setActionLoading(true);
             setSelectedRow(id);
@@ -200,7 +197,7 @@ const OrderManagement = () => {
               `${apiURL}/admin/orders/${id}/`,
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );
@@ -239,7 +236,7 @@ const OrderManagement = () => {
       setLoading(true);
       const response = await axios.get(`${apiURL}/admin/orders`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       if (!!response) {
@@ -264,7 +261,7 @@ const OrderManagement = () => {
     try {
       const response = await axios.get(`${apiURL}/admin/orders`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       if (!!response) {
@@ -285,7 +282,7 @@ const OrderManagement = () => {
   };
 
   React.useEffect(() => {
-   getAllOrders();
+    getAllOrders();
   }, []);
 
   return (

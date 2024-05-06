@@ -16,6 +16,8 @@ import { apiURL } from "../../config/constanst";
 import LoadingSkeleton from "../../components/LoadingSkeleton";
 import ActionMenu from "../../components/ActionMenu";
 import { toast } from "react-toastify";
+import CreateProductDialog from "./CreateProductDialog";
+import UpdateProductDialog from "./UpdateProductDialog";
 
 interface IProductHomePageResponse {
   id: string;
@@ -40,6 +42,11 @@ const ProductManagement = () => {
   const [totalRecord, setTotalRecord] = React.useState<number>(0);
   const [actionLoading, setActionLoading] = React.useState<boolean>(false);
   const [selectedRow, setSelectedRow] = React.useState<string | number>("");
+  const [openCreateDialog, setOpenCreateDialog] =
+    React.useState<boolean>(false);
+  const [openUpdateDialog, setOpenUpdateDialog] =
+    React.useState<boolean>(false);
+  const [currentProduct, setCurrentProduct] = React.useState<any | null>(null);
 
   const ROW_PER_PAGE = 10;
 
@@ -200,45 +207,75 @@ const ProductManagement = () => {
   }, []);
 
   return (
-    <MainLayout
-      title="Danh sách sản phẩm "
-      content={
-        isLoading ? (
-          <div className="w-full h-full px-8 mt-20">
-            <LoadingSkeleton />
-          </div>
-        ) : (
-          <div className="w-full flex flex-col gap-y-5 bg-white shadow-xl rounded-2xl">
-            <div className="flex flex-row justify-between items-center">
-              <div></div>
-              <div className="flex flex-row gap-x-2">
-                <Pagination
-                  onChange={(event, changedPage) => setPage(changedPage)}
-                  count={Math.ceil(totalRecord / ROW_PER_PAGE)}
-                  defaultPage={1}
-                  page={page}
+    <>
+      <MainLayout
+        title="Danh sách sản phẩm "
+        content={
+          isLoading ? (
+            <div className="w-full h-full px-8 mt-20">
+              <LoadingSkeleton />
+            </div>
+          ) : (
+            <div className="w-full flex flex-col gap-y-5 bg-white shadow-xl rounded-2xl">
+              <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row gap-x-2">
+                  <Pagination
+                    onChange={(event, changedPage) => setPage(changedPage)}
+                    count={Math.ceil(totalRecord / ROW_PER_PAGE)}
+                    defaultPage={1}
+                    page={page}
+                  />
+                </div>
+
+                <button
+                  onClick={() => setOpenCreateDialog(true)}
+                  className="bg-blue-500 text-white  w-fit h-[40px] px-3 py-1 font-bold rounded-lg flex items-center hover:opacity-80"
+                >
+                  <p>Thêm sản phẩm</p>
+                </button>
+              </div>
+              <div className="h-[800px] w-full">
+                <DataGrid
+                  rows={products}
+                  columns={columns}
+                  onRowClick={(params) => {
+                    console.log("HEHE");
+                    setOpenUpdateDialog(true);
+                    setCurrentProduct(params?.row);
+                  }}
+                  pageSize={11}
+                  disableSelectionOnClick
+                  rowsPerPageOptions={[10]}
+                  onSelectionModelChange={(newSelectionModel) => {
+                    setDeleteDisable(!deleteDisable);
+                    setSelectionModel(newSelectionModel);
+                  }}
+                  selectionModel={selectionModel}
+                  checkboxSelection
                 />
               </div>
             </div>
-            <div className="h-[800px] w-full">
-              <DataGrid
-                rows={products}
-                columns={columns}
-                pageSize={11}
-                disableSelectionOnClick
-                rowsPerPageOptions={[10]}
-                onSelectionModelChange={(newSelectionModel) => {
-                  setDeleteDisable(!deleteDisable);
-                  setSelectionModel(newSelectionModel);
-                }}
-                selectionModel={selectionModel}
-                checkboxSelection
-              />
-            </div>
-          </div>
-        )
-      }
-    />
+          )
+        }
+      />
+
+      {openCreateDialog ? (
+        <CreateProductDialog
+          open={openCreateDialog}
+          onClose={() => setOpenCreateDialog(false)}
+          onActionSucces={() => refreshProducts()}
+        />
+      ) : null}
+
+      {openUpdateDialog ? (
+        <UpdateProductDialog
+          open={openUpdateDialog}
+          currentProduct={currentProduct}
+          onClose={() => setOpenUpdateDialog(false)}
+          onActionSucces={() => refreshProducts()}
+        />
+      ) : null}
+    </>
   );
 };
 

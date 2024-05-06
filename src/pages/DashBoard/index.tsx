@@ -63,21 +63,19 @@ export default function DashBoard() {
   });
 
   const [pieState, setPieState] = useState({
-    series: [44, 55, 13, 43, 22, 20, 30, 11],
+    series: [44, 55, 13, 43, 22, 30],
     options: {
       chart: {
         width: 380,
         type: "pie",
       },
       labels: [
-        "Puma",
-        "Louis Vuiton",
-        "Balenciaga",
-        "Channel",
-        "Adidas",
-        "Nike",
-        "Saint Laurent",
-        "Dior",
+        "Đơn mói",
+        "Đơn đã nhận",
+        "Đơn đang xử lý",
+        "Đơn đang giao",
+        "Đơn đã hoàn thành",
+        "Đơn đã hủy",
       ],
       theme: {
         monochrome: {

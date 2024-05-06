@@ -18,6 +18,7 @@ interface IProduct {
   size: string;
   bidIncrement: number;
   bidClosingDate: string;
+  buyTime: number;
 }
 
 interface IProductCategory {

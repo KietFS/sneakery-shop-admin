@@ -3,9 +3,15 @@ import Chart from "react-apexcharts";
 import { useRerender } from "../../hooks/useRerender";
 import MainLayout from "../../layouts/MainLayout";
 import useWindowDimensions from "../../hooks/useWindowDimension";
+import axios from "axios";
+import { apiURL } from "../../config/constanst";
 
 export default function DashBoard() {
   const { rerender } = useRerender();
+  const [products, setProducts] = useState<IProduct[]>([])
+  
+  const names = products?.map((product) => product.name)
+  const buyTime = products?.map((product) => product.buyTime)
 
   const [lineState, setLineState] = useState({
     options: {
@@ -13,25 +19,13 @@ export default function DashBoard() {
         id: "basic-bar",
       },
       xaxis: {
-        categories: [
-          "Tháng 1",
-          "Tháng 2",
-          "Tháng 3",
-          "Tháng 4",
-          "Tháng 5",
-          "Tháng 6",
-          "Tháng 7",
-          "Tháng 9",
-          "Tháng 10",
-          "Tháng 11",
-          "Tháng 12",
-        ],
+        names
       },
     },
     series: [
       {
         name: "Số lượng",
-        data: [7, 5, 5, 10, 30, 40, 8, 30, 41, 42, 43],
+        data: buyTime
       },
     ],
   });
@@ -137,6 +131,22 @@ export default function DashBoard() {
     }));
   }, [dimension]);
 
+  const getTenPopularProducts  = async () => {
+    try {
+      const response = await axios.get(`${apiURL}/admin/products/popular`)
+      if (response?.data?.success) {
+        console.log(response?.data?.results)
+        setProducts(response?.data?.results)
+      }
+    } catch (error) {
+      console.log('ERROR')
+    }
+  }
+
+  useEffect(() => {
+    getTenPopularProducts()
+  },[])
+
   return (
     <MainLayout
       title="Tổng quan thông tin của sàn"
@@ -147,8 +157,8 @@ export default function DashBoard() {
               Doanh thu của cửa hàng theo tháng (2023)
             </p>
             <Chart
-              options={lineState.options}
-              series={lineState.series}
+              options={lineState.options as any}
+              series={lineState.series as any}
               type="line"
               width="99%"
               height="280"
